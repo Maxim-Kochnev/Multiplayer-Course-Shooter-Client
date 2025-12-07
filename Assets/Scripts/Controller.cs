@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerCharacter _player;
     private void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
