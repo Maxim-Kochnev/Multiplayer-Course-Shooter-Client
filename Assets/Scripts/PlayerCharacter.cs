@@ -22,7 +22,8 @@ public class PlayerCharacter : MonoBehaviour
     {
         //Vector3 direction = new Vector3(_inputH, 0, _inputV).normalized;
         //transform.position += _speed * Time.deltaTime * direction;
-
+        
+        // перемещение через rigidbody
         Vector3 velocity = (transform.forward * _inputV + transform.right * _inputH).normalized * _speed;
         _rigidbody.linearVelocity = velocity;
     }
