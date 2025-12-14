@@ -22,6 +22,19 @@ public class EnemyController : MonoBehaviour
     }
 
     private float _lastReceiveTime = 0;
+    private Player _player;
+
+    public void Init(Player player) {
+        _player = player;
+        _character.SetSpeed(player.speed);
+        player.OnChange += OnChange;
+    }
+
+    public void Destroy()
+    {
+        _player.OnChange -= OnChange;
+        Destroy(gameObject);
+    }
 
     private void SaveReceiveTime()
     {
@@ -36,7 +49,7 @@ public class EnemyController : MonoBehaviour
         SaveReceiveTime();
 
         Vector3 position = _character.TargetPosition;
-        Vector3 velocity = Vector3.zero;
+        Vector3 velocity = _character.velocity;
 
         foreach (var dataChange in changes)
         {
@@ -59,6 +72,12 @@ public class EnemyController : MonoBehaviour
                     break;
                 case "vZ":
                     velocity.z = (float)dataChange.Value;
+                    break;
+                case "rX":
+                    _character.SetRotateX((float)dataChange.Value);
+                    break;
+                case "rY":
+                    _character.SetRotateY((float)dataChange.Value);
                     break;
                 default:
                     Debug.LogWarning("Не обрабатывается изменение поля " + dataChange.Field);
