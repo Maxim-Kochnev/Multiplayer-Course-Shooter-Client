@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 1857291147299028483}
   - component: {fileID: 1716648802165058670}
   - component: {fileID: 897895046496630354}
+  - component: {fileID: 2301654440783134420}
+  - component: {fileID: 4485764314312760925}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -82,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Controller
   _player: {fileID: 2230921717125627829}
+  _gun: {fileID: 2301654440783134420}
   _mouseSensetivity: 2
 --- !u!114 &2230921717125627829
 MonoBehaviour:
@@ -186,6 +189,67 @@ MonoBehaviour:
   _checkFly: {fileID: 1716648802165058670}
   _animator: {fileID: 5692579491961246772}
   _character: {fileID: 2230921717125627829}
+--- !u!114 &2301654440783134420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587989817494577453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37224f8963187254593de94f749038fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGun
+  _bulletPrefab: {fileID: 6868520697611732573, guid: 8979dadb91872d6408ff58c8f46d3d06, type: 3}
+  _bulletPoint: {fileID: 8297601347231819151}
+  _bulletSpeed: 10
+  _shootDelay: 0.2
+--- !u!114 &4485764314312760925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587989817494577453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8805401a6efe2e64085a9ea7982b6bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunAnimation
+  _gun: {fileID: 2301654440783134420}
+  _animator: {fileID: 1005703399154923563}
+--- !u!1 &9119048159415047707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8297601347231819151}
+  m_Layer: 0
+  m_Name: BulletPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8297601347231819151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119048159415047707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.274, y: -1.307, z: 0.022}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7696569277117472624}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &4594692641722951117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260,10 +324,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6128295628213254845, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 923577482576905151}
+    - targetCorrespondingSourceObject: {fileID: 6128295628213254845, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8297601347231819151}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5773215855315535954, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5692579491961246772}
+    - targetCorrespondingSourceObject: {fileID: 4874820608474953760, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1005703399154923563}
   m_SourcePrefab: {fileID: 100100000, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
 --- !u!4 &2335675889442291 stripped
 Transform:
@@ -291,6 +361,33 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 473a202cae3a8a34fb818572b2dd62e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8963701607809703405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4874820608474953760, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
+  m_PrefabInstance: {fileID: 4594692641722951117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1005703399154923563
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8963701607809703405}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d74c7878942f16d4499da805707d24f2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
