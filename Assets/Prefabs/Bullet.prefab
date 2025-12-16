@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ad9ffacf807e7448e681dbce5c4369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  _lifeTime: 5
   _rigidbody: {fileID: 8475209744740761822}
 --- !u!1 &2719233545734214933
 GameObject:
